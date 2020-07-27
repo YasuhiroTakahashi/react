@@ -3,6 +3,13 @@
   width: 150px;
   font-size: x-large;
 }
+.win-square {
+  height: 150px;
+  width: 150px;
+  font-size: x-large;
+  color: whitesmoke;
+  background-color: steelblue;
+}
 
 .game {
   width: 100%;
@@ -15,9 +22,38 @@
 
 .game-info {
   width: 40%;
+}
+
+.game-status {
+  width: 200px;
+  height: 50px;
+  font-size: xx-large;
+  color: whitesmoke;
+  background-color: darkslateblue;
+}
+
+.sort-button-area {
+  margin-top: 5px;
+  display: flex;
+  background-color: darkgray;
+  width: 300px;
+}
+.sort-button {
   font-size: x-large;
+  min-width: 150px;
+}
+.sort-button-2 {
+  font-size: x-large;
+  min-width: 150px;
+  margin-left: 150px;
 }
 
 .game-history {
   font-size: x-large;
+}
+
+.selected-history {
+  font-size: x-large;
+  color: whitesmoke;
+  background-color: cornflowerblue;
 }
