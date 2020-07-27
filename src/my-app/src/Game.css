@@ -1,0 +1,23 @@
+.square {
+  height: 150px;
+  width: 150px;
+  font-size: x-large;
+}
+
+.game {
+  width: 100%;
+  display: flex;
+}
+
+.game-board {
+  width: 40%;
+}
+
+.game-info {
+  width: 40%;
+  font-size: x-large;
+}
+
+.game-history {
+  font-size: x-large;
+}

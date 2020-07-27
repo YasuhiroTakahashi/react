@@ -1,16 +1,9 @@
 import React from 'react'
-
+import './Game.css'
 class Square extends React.Component<
   { value: string; onClick: () => void },
   { value: string }
 > {
-  constructor(props: Readonly<{ value: string; onClick: () => {} }>) {
-    super(props)
-    this.state = {
-      value: '-',
-    }
-  }
-
   render() {
     return (
       <button className="square" onClick={this.props.onClick}>
@@ -66,13 +59,16 @@ class Game extends React.Component<
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null),
+          squares: Array(9).fill(this.defaultStr),
         },
       ],
       stepNumber: 0,
       xIsNext: true,
     }
   }
+
+  defaultStr: string = '-'
+
   jumpTo(step: number) {
     this.setState({
       stepNumber: step,
@@ -87,7 +83,9 @@ class Game extends React.Component<
       const desc = move ? 'Go to move #' + move : 'Go to game start'
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className="game-history" onClick={() => this.jumpTo(move)}>
+            {desc}
+          </button>
         </li>
       )
     })
@@ -128,7 +126,8 @@ class Game extends React.Component<
       if (
         squares[a] &&
         squares[a] === squares[b] &&
-        squares[a] === squares[c]
+        squares[a] === squares[c] &&
+        squares[a] !== this.defaultStr
       ) {
         return squares[a]
       }
@@ -139,7 +138,11 @@ class Game extends React.Component<
     const history = this.state.history.slice(0, this.state.stepNumber + 1)
     const current = history[history.length - 1]
     const squares = current.squares.slice()
-    if (this.calculateWinner(squares) || squares[i]) {
+    if (
+      (this.calculateWinner(squares) !== this.defaultStr &&
+        this.calculateWinner(squares) !== null) ||
+      squares[i] !== this.defaultStr
+    ) {
       return
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O'
